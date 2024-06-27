@@ -37,7 +37,7 @@ export default function Admin()
       const [chats,setChats]=useState<string[]>([]);
 
     return (
-        <div>
+        <div style={{backgroundColor:'yellow'}}>
             All client Chats - click conversation to join
             <div>
           {chats.map(( chat , key) => (
