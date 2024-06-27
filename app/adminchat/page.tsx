@@ -70,7 +70,7 @@ export default function AdminChat()
       const [showSpinner, setShowSpinner] = useState(false);
       const [namelock,setNameLock] = useState(false);
 
-    return (client==null)?<></>:
+    return ((client==null)?<></>:
     
 
       <div className={styles.chat_div}>
@@ -114,7 +114,7 @@ export default function AdminChat()
         </div>
     </div>
     </div>
- 
+        
 )
 
 }
