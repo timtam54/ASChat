@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "../page.module.css";
 import { io } from "socket.io-client";
 import { useSearchParams } from "next/navigation";
-import { Suspense } from 'react'
+
 interface IMsgDataTypes {
     roomId: String | number;
     user: String;
@@ -70,8 +70,9 @@ export default function AdminChat()
       const [showSpinner, setShowSpinner] = useState(false);
       const [namelock,setNameLock] = useState(false);
 
-    return (
-      <Suspense>
+    return (client==null)?<></>:
+    
+
       <div className={styles.chat_div}>
       <div className={styles.chat_border}>
          <h3>Admin Console - Chat with {client}</h3>
@@ -113,7 +114,7 @@ export default function AdminChat()
         </div>
     </div>
     </div>
-    </Suspense>
+ 
 )
 
 }
