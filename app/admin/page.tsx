@@ -1,5 +1,5 @@
 "use client"
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import styles from "../page.module.css";
 import { io } from "socket.io-client";
 import { Toaster, toast } from "sonner";
@@ -15,9 +15,9 @@ export default function Admin()
             socket.on('room',async (data:string)  => {
                 //alert('room:'+data);    
                 if (!chats.includes(data))
-                    {
+                    { setChats([...chats,data]);
                       new Audio('./sound/message.mp3').play();
-                setChats([...chats,data]);
+               
                 toast(data, {
                   position: 'bottom-left',
                 action: {
@@ -35,25 +35,30 @@ export default function Admin()
       }, [socket]);
 
       const [chats,setChats]=useState<string[]>([]);
-
+      const deleteChat=(event: MouseEventHandler<HTMLElement>)=>{
+       // const ss=event
+        event.t
+        alert();
+      }
     return (
-        <div style={{backgroundColor:'yellow'}}>
-            All client Chats - click conversation to join
+      <body style={{backgroundColor:'yellow'}}>
+          <div style={{display:'flex',justifyContent:'space-between',alignItems: 'center'}}><h2 style={{fontSize:'32px'}}><b>Admin page</b></h2>&nbsp;&nbsp;<p>All client Chats - click conversation to join</p></div>
             <div>
           {chats.map(( chat , key) => (
-            <div
-              key={key}
-              
-            >
-              <h3>
-                <h1><u>{chat}</u></h1>
+            <div key={key}>
+             <div style={{display:'flex',justifyContent:'space-between',alignItems: 'center'}}>
+                <h1><u>{chat}</u></h1><u id={chat} onClick={() => {
+                  alert('delete'+chat);
+                   setChats( chats.filter((i:string)=>i!=chat));
+                }}>Delete</u>
                 <ChatPage socket={socket} client={chat} />
-              </h3>
+                </div>
               <Toaster />
             </div>
           ))}
         </div>
-        </div>
+        
+        </body>
     )
 }
 //https://stackademic.com/blog/building-a-real-time-chat-app-with-next-js-socket-io-and-typescript

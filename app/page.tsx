@@ -2,8 +2,8 @@
 import { useEffect, useState } from "react";
 import styles from "./page.module.css";
 import { io } from "socket.io-client";
-
-
+import { Toaster, toast } from "sonner";
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 interface IMsgDataTypes {
     roomId: String | number;
     user: String;
@@ -43,6 +43,18 @@ export default function ClientChat()
     useEffect(() => {
         socket.on("receive_msg", (data: IMsgDataTypes) => {
           new Audio('./sound/message.mp3').play();
+          
+               
+                toast(data.msg, {
+                  position: 'bottom-left',
+                action: {
+                label: 'More',
+                onClick: () => alert(data.msg),
+                },
+                description: 'chat with '+data.user +'`',
+                duration: 5000,
+                icon: <NotificationsNoneIcon />,
+                });
           setChat((pre) => [...pre, data]);
         });
       }, [socket]);
@@ -68,9 +80,11 @@ export default function ClientChat()
       const [namelock,setNameLock] = useState(false);
 
     return (
+    <body style={{backgroundColor:'lightblue'}}>
+      <h2 style={{fontSize:'32px'}}><b>Client Page</b></h2>&nbsp;&nbsp;<p>chat to Admin</p> 
       <div className={styles.chat_div}>
       <div className={styles.chat_border}>
-           <h3>Client chat to Admin</h3>
+     
         <form onSubmit={(e) => sendData(e)}>
           <div style={{ marginBottom: "1rem" ,display:'flex'}}>
             <b>Your Name</b>
@@ -128,6 +142,8 @@ export default function ClientChat()
         </div>
     </div>
     </div>
+
+    </body>
 )
 }
 

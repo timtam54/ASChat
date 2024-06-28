@@ -13,8 +13,7 @@ interface IMsgDataTypes {
 
 const AdminChat=({ socket, client }: any) =>
 {
-  //  var socket: any;
-    //socket = io("https://aschat.azurewebsites.net");//"http://localhost:8080");
+
     const sendData = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         
@@ -70,12 +69,10 @@ const AdminChat=({ socket, client }: any) =>
       const [showSpinner, setShowSpinner] = useState(false);
       const [namelock,setNameLock] = useState(false);
 
-    return ((client==null)?<></>:
-    
-
+    return (
       <div className={styles.chat_div}>
       <div className={styles.chat_border}>
-         <h3>Admin Console - Chat with {client}</h3>
+         <h3>Chat with {client}</h3>
         <form onSubmit={(e) => sendData(e)}>
            <div style={{display:'flex'}}>
             <b>Message</b>
