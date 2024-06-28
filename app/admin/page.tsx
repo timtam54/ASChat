@@ -35,11 +35,8 @@ export default function Admin()
       }, [socket]);
 
       const [chats,setChats]=useState<string[]>([]);
-      const deleteChat=(event: MouseEventHandler<HTMLElement>)=>{
-       // const ss=event
-        event.t
-        alert();
-      }
+     
+      
     return (
       <body style={{backgroundColor:'yellow'}}>
           <div style={{display:'flex',justifyContent:'space-between',alignItems: 'center'}}><h2 style={{fontSize:'32px'}}><b>Admin page</b></h2>&nbsp;&nbsp;<p>All client Chats - click conversation to join</p></div>
