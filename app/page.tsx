@@ -14,7 +14,7 @@ export default function ClientChat()
 {
 
     var socket: any;
-  socket = io("https://aschat.azurewebsites.net");//"http://localhost:8080");//"http://localhost:8080");//https://aschat.azurewebsites.net
+  socket = io("http://localhost:8080");//"https://aschat.azurewebsites.net");//"http://localhost:8080");//https://aschat.azurewebsites.net
 
 
     const sendData = async (e: React.FormEvent<HTMLFormElement>) => {

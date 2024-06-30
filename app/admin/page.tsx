@@ -8,7 +8,7 @@ import ChatPage from "@/components/page";
 export default function Admin() 
 {
     var socket: any;
-    socket = io("https://aschat.azurewebsites.net");//http://localhost:8080");
+    socket = io("http://localhost:8080");//https://aschat.azurewebsites.net   http://localhost:8080");
     useEffect(() => {
         //socket.on("connect",()=>{
            // console.log('connected to 8080');
